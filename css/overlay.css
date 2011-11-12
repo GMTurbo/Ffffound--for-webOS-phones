@@ -1,0 +1,95 @@
+.overlay{
+	/*background:rgba(34,59,91,0.95);*/
+	background: rgba(0,0,0,0.85);
+	border-bottom-right-radius:0.5em;
+	border-top-right-radius:0.5em;
+	position: fixed;
+	color:white;
+	width:20px;
+	height:65px;
+	top:240px;
+	left:0px;
+	display:block;
+	font-size:15px;
+	z-index:100;
+}
+#overlayMain{
+	width:20px;
+	height:60px;
+	z-index:10;
+	-webkit-transition-property: top;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease-in-out;
+}
+td.loading {
+	width:20px;
+	height:55px;
+	padding: 2pt;
+	-webkit-animation-name: loadbar; 
+	-webkit-animation-duration: 1.2s; 
+	-webkit-animation-iteration-count: infinite; 
+	-webkit-animation-timing-function: ease-in-out;
+	background: url(../images/dot.png) center center no-repeat;
+	background-position:top;
+	z-index:10;
+}
+@-webkit-keyframes loadbar{
+	0% { background-position: top;}
+	50% {background-position: bottom; }
+	100% {background-position: top; }
+}
+.toolbar{
+	position: fixed;
+	width:70px;
+	height:170px;
+	top: 56%;
+	z-index:100;
+	opacity: 0.85;
+	-webkit-transition-property: left;
+	-webkit-transition-duration: 0.75s;
+	-webkit-transition-timing-function: ease-in-out;
+}
+.toolbar.hide{
+	/*opacity:0;
+	z-index:0;*/
+	left: 100%;
+}
+.toolbar.show{
+	/*opacity:1;
+	z-index:10;*/
+	left: 77%;
+}
+
+#overlayToolBar{
+	z-index:100;
+	/*-webkit-transition-property: opacity;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease-in-out;*/
+}
+img#saveBut{
+	height: 50px;
+	width: 65px;
+	padding: 2px;
+	background: url(../images/download.png) center center no-repeat;
+	background-color: white;
+	border: solid;
+	border-color: black;
+}
+img#openBut{
+	height: 50px;
+	width: 65px;
+	padding: 2px;
+	background: url(../images/web.png) center center no-repeat;
+	background-color: white;
+	border: solid;
+	border-color: black;
+}
+img#emailBut{
+	height: 50px;
+	width: 65px;
+	padding: 2px;
+	background: url(../images/email.png) center center no-repeat;
+	background-color: white;
+	border: solid;
+	border-color: black;
+}

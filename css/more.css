@@ -1,0 +1,37 @@
+.moreBut {
+	color: white;
+	font: bold 30px / 32px Helvetica,Sans - Serif;
+	letter-spacing: -1px;
+	height: 70px;
+	witdth: 100px;
+	/*background: rgba(28, 52, 86, 0.7);*/
+	background: rgba(0, 0,0, 0.75);
+	padding: 1px;
+	-webkit-transition: -webkit-transform .5s ease-out;
+}
+
+h3.header{
+	position: relative;
+	top: -23px;
+	z-index:1000;
+	width: 100%;
+	color: white;
+	font: bold 24px / 24px Helvetica,Sans - Serif;
+	letter-spacing: -1px;
+	/*background: rgba(28, 52, 86, 0.7);*/
+	background: rgba(0, 0, 0, 0.75);
+	padding: 1px;
+}
+
+#overlayBack{
+	position: fixed;
+	top: 95%;
+	left:2%;
+	z-index: 50;
+}
+
+/*
+<div id="overlayBack" class="backBut hide">
+		<span class="moreBut left" id="backButton">back</span>
+</div>
+*/

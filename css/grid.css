@@ -1,0 +1,43 @@
+
+/*img{
+	width:100%;
+	background:url(../images/holder.png) center center no-repeat;
+	z-index:0;
+}*/
+
+img#image{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width:100%;
+}
+.img-desc {
+	position: relative;
+	display: block;
+	/*height:335px;*/
+	width: 100%;
+	z-index:2;
+}
+span#search{
+	background:url(../images/arrow_sans_right_32.png) center center no-repeat;
+	background-size:100%;
+	position: absolute;
+  bottom: 7px;
+	right: 0px;
+	height: 25px;
+	width: 25px;
+	z-index: 10;
+	padding: 2px;
+}
+.img-desc cite {
+	background: #111;
+	filter:alpha(opacity=75);
+	opacity:.75;
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	border-top: 1px solid #999;
+}

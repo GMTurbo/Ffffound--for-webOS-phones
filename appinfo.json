@@ -1,0 +1,11 @@
+{
+	"id": "com.gmturbo.ffffound",
+	"version": "1.1.2",
+	"vendor": "gmturbo",
+	"type": "web",
+	"main": "index.html",
+	"title": "ffffound",
+	"splashBackground": "images/drop.png",
+	"keywords": ["images","ffffound","gmturbo"],
+	"icon": "icon2.png"
+}
