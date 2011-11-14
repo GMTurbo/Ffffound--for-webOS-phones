@@ -1,10 +1,12 @@
 opus.Gizmo({
 	name: "fullView",
+	layoutKind: "absolute",
 	dropTarget: true,
 	type: "Palm.Mojo.Panel",
 	h: "100%",
 	styles: {
-		zIndex: 2
+		zIndex: 2,
+		bgColor: "black"
 	},
 	chrome: [
 		{

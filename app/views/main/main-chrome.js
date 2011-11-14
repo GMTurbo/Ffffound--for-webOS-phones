@@ -14,7 +14,7 @@ opus.Gizmo({
 			mode: "horizontal-snap",
 			snapElements: "label3,label1,label2",
 			scrollPosition: {
-				left: -640,
+				left: 0,
 				top: 0
 			},
 			type: "Palm.Mojo.Scroller",
@@ -86,7 +86,7 @@ opus.Gizmo({
 			mode: "horizontal-snap",
 			snapElements: "searchScroll,mainScroll,userScroll",
 			scrollPosition: {
-				left: -640,
+				left: 0,
 				top: 0
 			},
 			type: "Palm.Mojo.Scroller",

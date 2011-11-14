@@ -9,7 +9,7 @@ function MainAssistant(argFromPusher) {
 	this.foundArray = [];
 	this.author = null;
 	this.timer = null;
-	this.highQ = false;
+	this.highQ = true;
 
 	cookie = new Mojo.Model.Cookie("hd");
 	if (cookie.get()) {
@@ -28,7 +28,7 @@ function MainAssistant(argFromPusher) {
 				link: items[i].link,
 				content: items[i].content,
 				title: items[i].title,
-				source: items[i].source.referer
+				source: items[i].source
 			};
 		}
 		listModel = {
@@ -63,15 +63,24 @@ MainAssistant.prototype = {
 		Ares.setupSceneAssistant(this);
 		this.appMenuModel = {
 			items: [
+				{command:'none'},
 				{
 				label: "High Quality Images",
 				command: 'quality',
 				iconPath: this.highQ ? Mojo.appPath + "/images/check_mark.png" : "none"
+			},{command:'none'},
+				{
+				label: "Jump",
+				command: 'jump'
 			},
+				{
+				label: "Home",
+				command: 'home'
+			},{command:'none'},
 				{
 				label: "Support",
 				command: 'support'
-			}]
+			},{command:'none'}]
 		};
 		this.controller.setupWidget(Mojo.Menu.appMenu, {},
 		this.appMenuModel);
@@ -164,31 +173,63 @@ MainAssistant.prototype = {
 			}
 		});
 	},
-	advance: function(){
-		switch(snapIndex){
-			case 1:
-				spinner(true);
-				offset += 10;
-				this.loadPage();
+	advance: function() {
+		switch (snapIndex) {
+		case 1:
+			spinner(true);
+			offset += 10;
+			this.loadPage();
 			break;
-			case 2:
-				spinner(true);
-				userOffset += 10;
-				this.loadUserPage();
+		case 2:
+			spinner(true);
+			userOffset += 10;
+			this.loadUserPage();
 			break;
 		}
 	},
-	retreat: function(){
-		switch(snapIndex){
-			case 1:
-				spinner(true);
-				offset -= 10;
-				this.loadPage();
+	retreat: function() {
+		switch (snapIndex) {
+		case 1:
+			spinner(true);
+			offset -= 10;
+			this.loadPage();
 			break;
-			case 2:
-				spinner(true);
-				userOffset -= 10;
-				this.loadUserPage();
+		case 2:
+			spinner(true);
+			userOffset -= 10;
+			this.loadUserPage();
+			break;
+		}
+	},
+	jump: function() {
+		switch (snapIndex) {
+		case 1:
+			spinner(true);
+			offset += Math.floor(Math.random() * 50);
+			showBanner("Jumped forward " + offset * 10 + " images deep..");
+			this.loadPage();
+			break;
+		case 2:
+			spinner(true);
+			userOffset += Math.floor(Math.random() * 50);
+			showBanner("Jumped forward " + userOffset + " user images deep..");
+			this.loadUserPage();
+			break;
+		}
+	},
+	home: function() {
+		switch (snapIndex) {
+		case 1:
+			spinner(true);
+			offset = 0;
+			showBanner("Back to start");
+			this.loadPage();
+			break;
+		case 2:
+			spinner(true);
+			userOffset = 0;
+			showBanner("Back to beginning of user list");
+			this.loadUserPage();
 			break;
 		}
 	},
@@ -272,6 +313,7 @@ MainAssistant.prototype = {
 			this.loadUserImages(this.currentItem);
 			this.controller.get('scroller2').mojo.setSnapIndex(2, true);
 		} else {
+			//this.controller.stageController.setWindowOrientation("free");
 			this.controller.stageController.pushScene('fullView', {
 				item: this.currentItem
 			});
@@ -279,6 +321,7 @@ MainAssistant.prototype = {
 	},
 	list2Listtap: function(inSender, event) {
 		this.currentItem = event.item;
+		//this.controller.stageController.setWindowOrientation("free");
 		this.controller.stageController.pushScene('fullView', {
 			item: this.currentItem
 		});
@@ -355,6 +398,12 @@ MainAssistant.prototype.handleCommand = function(event) {
 					}
 				}
 			});
+			break;
+		case 'jump':
+			this.jump();
+			break;
+		case 'home':
+			this.home();
 			break;
 		}
 	}

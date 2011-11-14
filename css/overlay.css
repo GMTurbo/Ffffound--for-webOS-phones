@@ -7,7 +7,7 @@
 	color:white;
 	width:20px;
 	height:65px;
-	top:240px;
+	top:40%;
 	left:0px;
 	display:block;
 	font-size:15px;
@@ -43,9 +43,10 @@ td.loading {
 	width:70px;
 	height:170px;
 	top: 56%;
+	left: 77%;
 	z-index:100;
 	opacity: 0.85;
-	-webkit-transition-property: left;
+	-webkit-transition-property: top.left;
 	-webkit-transition-duration: 0.75s;
 	-webkit-transition-timing-function: ease-in-out;
 }
@@ -53,11 +54,13 @@ td.loading {
 	/*opacity:0;
 	z-index:0;*/
 	left: 100%;
+	top:100%;
 }
 .toolbar.show{
 	/*opacity:1;
 	z-index:10;*/
 	left: 77%;
+	top: 30%;
 }
 
 #overlayToolBar{

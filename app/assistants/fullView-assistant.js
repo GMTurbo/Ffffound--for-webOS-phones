@@ -19,16 +19,24 @@ FullViewAssistant.prototype = {
 		this.controller.listen(this.controller.get("one"), Mojo.Event.tap, this.save.bind(this));
 		this.controller.listen(this.controller.get("three"), Mojo.Event.tap, this.email.bind(this));
 		this.controller.listen(this.controller.get("two"), Mojo.Event.tap, this.open.bind(this));
+		this.controller.listen(this.controller.window, 'resize', this.handleResize.bind(this));
 	},
 	cleanup: function() {
 		Ares.cleanupSceneAssistant(this);
 		this.controller.stopListening(this.controller.get("one"), Mojo.Event.tap, this.save.bind(this));
 		this.controller.stopListening(this.controller.get("three"), Mojo.Event.tap, this.email.bind(this));
 		this.controller.stopListening(this.controller.get("two"), Mojo.Event.tap, this.open.bind(this));
+		this.controller.stopListening(this.controller.window, 'resize', this.handleResize.bind(this));
 	},
 	activate: function(){
 		spinner(true);
-		this.controller.get("imageView1").mojo.centerUrlProvided(this.item.content.url);
+		this.controller.stageController.setWindowOrientation("free");
+		this.controller.enableFullScreenMode(true);
+		this.controller.get("imageView1").mojo.centerUrlProvided(this.item.source.url);
+	},
+	deactivate: function(){
+		this.controller.enableFullScreenMode(false);
+		this.controller.stageController.setWindowOrientation("up");
 	},
 	imageView1Hold: function(inSender, event) {
 		toggleBar($('overlayToolBar').className.indexOf("hide") > 0);
@@ -96,18 +104,22 @@ FullViewAssistant.prototype = {
 			parameters: {
 				id: 'com.palm.app.browser',
 				params: {
-					target: this.item.source
+					target: this.item.source.referer
 				}
 			}
 		});
 	},
 	imageView1ImageViewChanged: function(inSender, event) {
 		spinner(false);
+	},
+	handleResize: function(inSender, event){
+		this.controller.get('imageView1').mojo.manualSize(this.controller.window.innerWidth, this.controller.window.innerHeight);
 	}
 };
 
 FullViewAssistant.prototype.handleCommand = function(event) {
 	if (event.type == Mojo.Event.command) {} else if (event.type === Mojo.Event.back) {
+		spinner(false);
 		this.controller.stageController.popScene({ret: true});
 	}
 };
